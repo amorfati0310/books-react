@@ -4,7 +4,7 @@ class LikeButton extends React.Component {
     this.state = { liked: false };
   }
   render() {
-    const text = this.state.liked ? '좋아요 취소4' : '좋아요';
+    const text = this.state.liked ? '좋아요 취소' : '좋아요';
     return React.createElement(
       'button',
       { onClick: () => this.setState({ liked: true }) },
@@ -19,25 +19,27 @@ class Container extends React.Component {
     this.state = { count: 0 };
   }
   render() {
-    return (
-      <div>
-      <LikeButton />
-      <div style={{ marginTop: 20 }}>
-  <span>현재 카운트: </span>
-    <span>{this.state.count}</span>
-    <button
-    onClick={() => this.setState({ count: this.state.count + 1 })}
-  >
-    증가
-    </button>
-    <button
-    onClick={() => this.setState({ count: this.state.count - 1 })}
-  >
-    감소
-    </button>
-    </div>
-    </div>
-  );
+    return React.createElement(
+      'div',
+      null,
+      React.createElement(LikeButton),
+      React.createElement(
+        'div',
+        { style: { marginTop: 20 } },
+        React.createElement('span', null, '현재 카운트: '),
+        React.createElement('span', null, this.state.count),
+        React.createElement(
+          'button',
+          { onClick: () => this.setState({ count: this.state.count + 1 }) },
+          '증가',
+        ),
+        React.createElement(
+          'button',
+          { onClick: () => this.setState({ count: this.state.count - 1 }) },
+          '감소',
+        ),
+      ),
+    );
   }
 }
 
